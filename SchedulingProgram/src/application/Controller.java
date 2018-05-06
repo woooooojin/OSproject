@@ -138,30 +138,30 @@ public class Controller implements Initializable {
 					            (int) (color[i%5].getBlue() * Math.floor( (255/numP)*(i+1) )));
 			    } 
 	    	}
-	
-			//포로세스 기법이 RR인 경우 TimeQuantum값 저장
-	    	if(nameSchedule.equals("RR") && !textTimeQ.getText().toString().equals("")) {
-	    		timequantum = Integer.parseInt(textTimeQ.getText().toString());
-	    	}
 	    	
-			//프로세스 콤보박스 초기값 생성 
-			comPro.getItems().clear();
-			comPro.setValue("Process P1");
-			
+	    	//포로세스 기법이 RR인 경우 TimeQuantum값 저장
+	    	if(nameSchedule.equals("RR")&&!textTimeQ.getText().equals("")) 
+	    		timequantum = Integer.parseInt(textTimeQ.getText().toString());
+	    	
+	    	//프로세스 콤보박스 초기값 생성 
+		    comPro.getItems().clear();
+		    comPro.setValue("Process P1");
+					
 			//프로세스 수 만큼 콤보박스 리스트 추가
-			for(int i = 1; i <= numP; i++) {
-				comPro.getItems().add("Process P"+Integer.toString(i));
+		    for(int i = 1; i <= numP; i++) {
+		    	comPro.getItems().add("Process P"+Integer.toString(i));
 			}
-			
+					
 			//모니터에 셋팅한 결과 출력
 			textArea.clear();
 			textArea.setText(textArea.getText() + "-> Process Scheduling : " + nameSchedule + "!\n\r\n\r");
 			textArea.setText(textArea.getText() + "-> Create Process " + Integer.toString(numP) + "!\n\r\n\r");
 			if(nameSchedule.equals("RR")) textArea.setText(textArea.getText() + "-> Time Quantum " + timequantum + "!\n\r\n\r");
 			textArea.setText(textArea.getText() + "-> Please Setting Process Information :-)\n\r\n\r");
-			
+					
 			textTimeQ.clear();
 			textNumP.clear();
+	    	
 		});
 		
 	    //버튼 이벤트 처리 - Set버튼
@@ -194,7 +194,7 @@ public class Controller implements Initializable {
 		btnStart.setOnMouseClicked(event -> {
 			try {
 				//프로세스 정보와 스케줄링 정보 입력 안했을 경우 예외처리
-				if(lp == null && timequantum == 0){
+				if(lp == null || timequantum == 0){
 					throw new IndexOutOfBoundsException();
 				}else {
 						
