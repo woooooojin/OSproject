@@ -77,7 +77,7 @@ public class Controller implements Initializable {
 	ProcessP[] ap;
     String textPro;
     LinkedList<ProcessP> lp = new LinkedList<ProcessP>();
-    a
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String s;
